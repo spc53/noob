@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcu.res.dao.ResCodeMapper">
+
+	<resultMap type="com.lcu.res.po.ResCode" id="BaseResultMap">
+		<result column="CodeType" 		jdbcType="VARCHAR" 		property="codeType" />
+		<result column="Number" 		jdbcType="VARCHAR" 		property="number" />
+		<result column="ChangeTime" 	jdbcType="TIMESTAMP" 	property="changeTime" />
+	</resultMap>
+
+	<select id="selectBytype" parameterType="String" resultMap="BaseResultMap">
+		select *
+		from r_rescode 
+		where CodeType=#{codeType}
+	</select>
+
+	<update id="update" parameterType="com.lcu.res.po.ResCode">
+		update r_rescode
+		set Number=#{number}, ChangeTime=now()
+		where CodeType=#{codeType}
+	</update>
+
+</mapper>

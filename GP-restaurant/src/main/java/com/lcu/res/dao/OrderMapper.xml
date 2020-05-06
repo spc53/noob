@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcu.res.dao.OrderMapper">
+
+	<resultMap type="com.lcu.res.po.Order" id="BaseResultMap">
+		<result column="RestaurantNumber" 	jdbcType="VARCHAR" 		property="restaurantNumber" />
+		<result column="OrderNumber" 		jdbcType="VARCHAR" 		property="orderNumber" />
+		<result column="TableNumber" 		jdbcType="VARCHAR" 		property="tableNumber" />
+		<result column="PeopleNum" 			jdbcType="INTEGER" 		property="peopleNum" />
+		<result column="ActualName" 		jdbcType="VARCHAR" 		property="actualName" />
+		<result column="TotalAmount" 		jdbcType="DECIMAL" 		property="totalAmount" />
+		<result column="PayStatus" 			jdbcType="INTEGER" 		property="payStatus" />
+		<result column="FinishStatus" 		jdbcType="INTEGER" 		property="finishStatus" />
+		<result column="QueuingStatus" 		jdbcType="INTEGER" 		property="queuingStatus" />
+		<result column="CreationTime" 		jdbcType="TIMESTAMP" 	property="creationTime" />
+		<result column="PayTime" 			jdbcType="TIMESTAMP" 	property="payTime" />
+		<result column="ChangeTime" 		jdbcType="TIMESTAMP" 	property="changeTime" />
+		<collection property="od" ofType="com.lcu.res.po.OrderDetail" 
+			column="{rn=RestaurantNumber,on=OrderNumber}" 
+			select="com.lcu.res.dao.OrderDetailMapper.selectodBackByonAndrn">
+		</collection>
+	</resultMap>
+
+	<insert id="saveOrder" parameterType="com.lcu.res.po.Order">
+		insert into r_order (RestaurantNumber, OrderNumber, TableNumber, PeopleNum, ActualName, TotalAmount,
+		PayStatus, FinishStatus, QueuingStatus, CreationTime)
+		values (#{restaurantNumber, jdbcType=VARCHAR}, #{orderNumber, jdbcType=VARCHAR}, 
+		#{tableNumber, jdbcType=VARCHAR}, #{peopleNum, jdbcType=INTEGER}, #{actualName, jdbcType=VARCHAR}, 
+		#{totalAmount, jdbcType=DECIMAL}, #{payStatus, jdbcType=INTEGER}, 
+		#{finishStatus, jdbcType=INTEGER}, #{queuingStatus, jdbcType=INTEGER}, now())
+	</insert>
+
+	<select id="selectCount" parameterType="Map" resultType="int">
+		select count(*) 
+		from r_order
+		where RestaurantNumber=#{restaurantNumber}
+		<if test="payStatus!=null">
+			and PayStatus=#{payStatus}
+		</if>
+		<if test="finishStatus!=null">
+			and FinishStatus=#{finishStatus}
+		</if>
+		<if test="queuingStatus!=null">
+			and QueuingStatus=#{queuingStatus}
+		</if>
+		<if test="startDate!=null">
+			and Date(CreationTime) &gt;= #{startDate}
+		</if>
+		<if test="endDate!=null">
+			and Date(CreationTime) &lt;= #{endDate}
+		</if>
+		<if test="orderNumber!=null">
+			and right(OrderNumber, 4)=#{orderNumber}
+		</if>
+	</select>
+	
+	<select id="findByPage" parameterType="Map" resultMap="BaseResultMap">
+		select *
+		from r_order
+		where RestaurantNumber=#{restaurantNumber}
+		<if test="payStatus!=null">
+			and PayStatus=#{payStatus}
+		</if>
+		<if test="finishStatus!=null">
+			and FinishStatus=#{finishStatus}
+		</if>
+		<if test="queuingStatus!=null">
+			and QueuingStatus=#{queuingStatus}
+		</if>
+		<if test="startDate!=null">
+			and Date(CreationTime) &gt;= #{startDate}
+		</if>
+		<if test="endDate!=null">
+			and Date(CreationTime) &lt;= #{endDate}
+		</if>
+		<if test="orderNumber!=null">
+			and right(OrderNumber, 4)=#{orderNumber}
+		</if>
+		<if test="start!=null and size!=null">
+			limit #{start},#{size}
+		</if>
+	</select>
+	
+	<select id="selectByonAndrn" parameterType="com.lcu.res.po.Order" resultMap="BaseResultMap">
+		select *
+		from r_order
+		where RestaurantNumber=#{restaurantNumber} and OrderNumber=#{orderNumber}
+	</select>
+
+	<delete id="deleteOrder" parameterType="com.lcu.res.po.Order">
+		delete from r_order
+		where RestaurantNumber=#{restaurantNumber} and OrderNumber=#{orderNumber}
+	</delete>
+
+</mapper>

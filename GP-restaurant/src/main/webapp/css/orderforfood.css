@@ -1,0 +1,89 @@
+.grid{
+    display: grid;
+    margin-top: 45px;
+    /*grid-template-columns: 100px 100px 100px;*/
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 24px;
+    row-gap: 24px;
+    width: 850px;
+    float: left;
+    border: 1px solid blue;
+}
+
+.a{
+    text-decoration: none;
+}
+
+.column{
+    width: 265px;
+    height: 100px;
+    background: gainsboro;
+    border-radius: 8px;
+    box-shadow: 10px 10px 5px silver;
+    border: silver 1px solid;
+}
+
+.img{
+    width: 60px;
+    height: 60px;
+    float: left;
+    margin-top: 5px;
+    margin-left: 5px;
+    border: #fff 1px solid;
+}
+
+.image{
+	width: 60px;
+    height: 60px;
+}
+
+.info{
+    margin-top: 5px;
+    margin-left: 5px;
+    float: left;
+    width: 180px;
+    height: 90px;
+    word-break:break-all;
+}
+
+.name{
+    color: #fff;
+    font-size: 16px;
+}
+
+.org{
+    color: #fff;
+    font-size: 12px;
+}
+
+.price{
+    color: red;
+    font-size: 14px;
+    float: left;
+    margin-top: 10px;
+}
+
+.sale{
+    color: #fff;
+    font-size: 12px;
+    float: left;
+    margin-top: 10px;
+    margin-left: 5px;
+    padding-top: 2px;
+}
+
+.insert{
+    float: right;
+    margin-top: 20px;
+    margin-right: 5px;
+}
+
+.corn{
+    width: 30px;
+    height: 30px;
+}
+
+.page{
+	position: absolute;
+    top: 550px;
+}

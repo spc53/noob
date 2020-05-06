@@ -1,0 +1,50 @@
+*{
+    text-decoration: none;
+}
+
+table{
+    width: 1200px;
+    border-collapse: collapse;
+}
+
+table td{
+    border-bottom: 1px silver dashed;
+    background: snow;
+    font-family: monospace;
+}
+
+table th{
+    background: silver;
+    color: snow;
+}
+
+.page a{
+    color: snow;
+    font-size: 14px;
+    background: #778899;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: .3s linear;
+}
+
+.bg{
+	margin-top: 40px;
+}
+
+.title{
+	font-size: 18px;
+    font-family: auto;
+    font-weight: bold;
+}
+
+.page{
+	position: absolute;
+    top: 550px;
+}
+
+.ucorn{
+	width: 16px;
+	height: 16px;
+}

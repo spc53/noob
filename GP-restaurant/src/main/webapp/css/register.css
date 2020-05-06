@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+.login-form{
+    width: 470px;
+    background: #87cefa;
+    margin-top: 50px;
+    margin-bottom: 60px;
+    padding: 30px 60px;
+}
+
+.textbox input{
+    width: 80%;
+    height: 50px;
+    float: left;
+    border: none;
+    background: #87ceeb !important;
+    padding: 0 15px;
+    font-size: 16px;
+    outline: none;
+    color: #f4f4f4;
+}
+
+.inputname{
+    width: 20%;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    font-size: 15px;
+    color: #fff;
+}
+
+.h6margin{
+    margin-top: 10px;
+}
+
+.have-account{
+    font-size: 14px;
+    text-align: left;
+    color: #f4f4f480;
+    margin: 20px 0; 
+}
+
+.have-account a{
+    color: #00bfff;
+}

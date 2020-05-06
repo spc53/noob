@@ -1,0 +1,30 @@
+@charset "UTF-8";
+.login-form{
+    width: 470px;
+    background: #87cefa;
+    padding: 30px 60px;
+}
+
+.textbox input{
+    width: 100%;
+    height: 50px;
+    border: none;
+    background: #87ceeb !important;
+    padding: 0 15px;
+    font-size: 16px;
+    outline: none;
+    color: #f4f4f4;
+}
+
+.radio{
+    width: 20px;
+    height: 20px;
+    color: #fff;
+    margin-right: 15px;
+    position: relative;
+}
+
+.radio input{
+    opacity: 0.5;
+    cursor: pointer;
+}

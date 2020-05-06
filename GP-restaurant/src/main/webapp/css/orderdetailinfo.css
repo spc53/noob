@@ -1,0 +1,63 @@
+*{
+    text-decoration: none;
+}
+
+.bg{
+    width: 300px;
+    padding: 5px;
+}
+
+.title{
+    width: 290px;
+}
+
+.body{
+    width: 290px;
+    height: 200px;
+    overflow: auto;
+}
+
+.total{
+	 text-align: right;
+}
+
+.bottom{
+    width: 290px;
+    text-align: right;
+}
+
+.font1{
+    font-size: 16px;
+}
+
+.font2{
+    font-size: 14px;
+}
+
+.font3{
+    font-size: 12px;
+}
+
+.table{
+    width: 280px;
+}
+
+.td1{
+    width: 55%;
+}
+
+.td2{
+    width: 15%;
+}
+
+.td3{
+    width: 15%;
+}
+
+.td4{
+    width: 15%;
+}
+
+th{
+    text-align: left;
+}

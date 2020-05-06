@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcu.res.dao.RestaurantMapper">
+
+	<resultMap type="com.lcu.res.po.Restaurant" id="BaseResultMap">
+		<result column="RestaurantNumber" 		jdbcType="VARCHAR" property="restaurantNumber" />
+		<result column="RestaurantName" 		jdbcType="VARCHAR" property="restaurantName" />
+		<result column="RestaurantTelephone" 	jdbcType="VARCHAR" property="restaurantTelephone" />
+		<result column="RestaurantAddress" 		jdbcType="VARCHAR" property="restaurantAddress" />
+		<result column="RestaurantManager" 		jdbcType="VARCHAR" property="restaurantManager" />
+		<result column="CreationTime" 			jdbcType="TIMESTAMP" property="creationTime" />
+		<result column="ChangeTime" 			jdbcType="TIMESTAMP" property="changeTime" />
+	</resultMap>
+
+	<insert id="createShop" parameterType="com.lcu.res.po.Restaurant">
+		insert into R_restaurant (RestaurantNumber, RestaurantName, RestaurantTelephone,
+		RestaurantAddress, RestaurantManager, CreationTime, ChangeTime)
+		values (#{restaurantNumber, jdbcType=VARCHAR}, #{restaurantName, jdbcType=VARCHAR},
+		 #{restaurantTelephone, jdbcType=VARCHAR}, #{restaurantAddress, jdbcType=VARCHAR}, 
+		 #{restaurantManager, jdbcType=VARCHAR}, now(), 
+		 now())
+	</insert>
+
+	<select id="selectByNum" parameterType="String" resultMap="BaseResultMap">
+		select *
+		from R_restaurant
+		where RestaurantNumber=#{restaurantNumber}
+	</select>
+
+</mapper>

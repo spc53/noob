@@ -1,0 +1,108 @@
+.bg{
+    background: #fff;
+    width: 315px;
+    border-radius: 10px;
+    box-shadow: silver;
+    box-shadow: 10px 10px 5px silver;
+    border: silver 1px solid;
+}
+
+.resname{
+    width: 300px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: #c0c0c0 solid 1px;
+    margin-left: 5px;
+}
+
+.rows{
+    margin-top: 5px;
+    height: 300px;
+    overflow:auto;
+}
+
+.row{
+    width: 290px;
+    height: 40px;
+    padding: 5px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.img{
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+
+.res{
+    margin-left: 5px;
+    height: 40px;
+    width: 140px;
+    float: left;
+    word-break:break-all;
+}
+
+.name{
+    font-size: 14px;
+}
+
+.quantity{
+    margin-left: 5px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 14px;
+    float: left;
+}
+
+.amount{
+    margin-left: 5px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 14px;
+    float: left;
+}
+
+.totalamount{
+    width: 300px;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 5px;
+    font-size: 20px;
+    border-top: solid 1px #c0c0c0;
+}
+
+.ta{
+    float: right;
+    margin-right: 5px;
+}
+
+a{
+    text-decoration: none;
+    float: right;
+    margin-right: 5px;  
+}
+
+.btn{
+    width: 300px;
+    height: 40px;
+    margin-top: 5px;
+}
+
+.font1{
+    font-family: "Yu Gothic UI Semibold";
+}
+
+.font2{
+    font-family: "微软雅黑";
+}
+
+span{
+    font-size: 16px;
+}

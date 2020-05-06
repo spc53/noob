@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcu.res.dao.CodeMapper">
+
+	<resultMap type="com.lcu.res.po.Code" id="BaseResultMap">
+		<result column="RestaurantNumber" 	jdbcType="VARCHAR" 		property="restaurantNumber" />
+		<result column="CodeType" 			jdbcType="VARCHAR" 		property="codeType" />
+		<result column="Number" 			jdbcType="VARCHAR" 		property="number" />
+		<result column="ChangeTime" 		jdbcType="TIMESTAMP" 	property="changeTime" />
+	</resultMap>
+
+	<select id="selectBytypeAndrn" parameterType="com.lcu.res.po.Code" resultMap="BaseResultMap">
+		select *
+		from r_code
+		where CodeType=#{codeType} and RestaurantNumber=#{restaurantNumber}
+	</select>
+	
+	<update id="updateBytype" parameterType="com.lcu.res.po.Code">
+		update r_code
+		set Number=#{number}, ChangeTime=now()
+		where CodeType=#{codeType} and RestaurantNumber=#{restaurantNumber}
+	</update>
+	
+	<insert id="createCode" parameterType="com.lcu.res.po.Code">
+		insert into r_code(RestaurantNumber, CodeType, Number, ChangeTime)
+		values(#{restaurantNumber, jdbcType=VARCHAR}, #{codeType, jdbcType=VARCHAR}, 
+		#{number, jdbcType=VARCHAR}, now())
+	</insert>
+
+</mapper>

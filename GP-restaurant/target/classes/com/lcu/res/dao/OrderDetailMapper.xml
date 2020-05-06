@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcu.res.dao.OrderDetailMapper">
+
+	<resultMap type="com.lcu.res.po.OrderDetail" id="BaseResultMap">
+		<result column="RestaurantNumber" 	jdbcType="VARCHAR" 		property="restaurantNumber" />
+		<result column="OrderNumber" 		jdbcType="VARCHAR" 		property="orderNumber" />
+		<result column="FoodNumber" 		jdbcType="VARCHAR" 		property="foodNumber" />
+		<result column="PictureName" 		jdbcType="VARCHAR" 		property="pictureName" />
+		<result column="FoodName" 			jdbcType="VARCHAR" 		property="foodName" />
+		<result column="UnitPrice" 			jdbcType="DECIMAL" 		property="unitPrice" />
+		<result column="Quantity" 			jdbcType="INTEGER" 		property="quantity" />
+		<result column="Amount" 			jdbcType="DECIMAL" 		property="amount" />
+		<result column="FinishStatus" 		jdbcType="INTEGER" 		property="finishStatus" />
+		<result column="CreationTime" 		jdbcType="TIMESTAMP" 	property="creationTime" />
+		<result column="FinishTime" 		jdbcType="TIMESTAMP" 	property="finishTime" />
+		<result column="ChangeTime" 		jdbcType="TIMESTAMP" 	property="changeTime" />
+	</resultMap>
+
+	<insert id="saveOrderDetail" parameterType="com.lcu.res.po.OrderDetail">
+		insert into r_orderdetail (RestaurantNumber, OrderNumber, FoodNumber, PictureName, FoodName, UnitPrice, Quantity, Amount,
+		FinishStatus, CreationTime)
+		values (#{restaurantNumber, jdbcType=VARCHAR}, #{orderNumber, jdbcType=VARCHAR}, #{foodNumber, jdbcType=VARCHAR}, #{pictureName, jdbcType=VARCHAR}, 
+		#{foodName, jdbcType=VARCHAR}, #{unitPrice, jdbcType=DECIMAL}, #{quantity, jdbcType=INTEGER}, 
+		#{amount, jdbcType=DECIMAL}, #{finishStatus, jdbcType=INTEGER}, now())
+	</insert>
+
+	<select id="selectodByonAndrn" parameterType="com.lcu.res.po.OrderDetail" resultMap="BaseResultMap">
+		select *
+		from r_orderdetail
+		where RestaurantNumber=#{restaurantNumber} and OrderNumber=#{orderNumber}
+	</select>
+	
+	<select id="selectodBackByonAndrn" parameterType="Map" resultMap="BaseResultMap">
+		select *
+		from r_orderdetail
+		where RestaurantNumber=#{rn} and OrderNumber=#{on}
+	</select>
+	
+	<delete id="deleteOrderD" parameterType="com.lcu.res.po.OrderDetail">
+		delete from r_orderdetail
+		where RestaurantNumber=#{restaurantNumber} and OrderNumber=#{orderNumber}
+	</delete>
+	
+</mapper>

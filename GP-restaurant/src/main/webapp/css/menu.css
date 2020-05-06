@@ -1,0 +1,104 @@
+.blobs {
+	position: absolute;
+	left: 40px;
+	top: 40px;
+	width: 59px;
+}
+
+.blob {
+	width: 59px;
+	height: 59px;
+	background: snow;
+	border-radius: 50px;
+	font-size: 34px;
+	font-weight: 700;
+	color: silver;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: absolute;
+	bottom: -100px;
+	left: 0;
+	margin-left: -20px;
+	cursor: pointer;
+}
+
+.blob1 {
+	z-index: 10;
+}
+
+.blob1 span {
+	transform: translateY(-2px);
+}
+
+.blob2 {
+	z-index: 9;
+	transition: all ease 0.5s;
+}
+
+.blob3 {
+	z-index: 8;
+	transition: all ease 0.55s;
+}
+
+.blob4 {
+	z-index: 7;
+	transition: all ease 0.7s;
+}
+
+.blob5 {
+	z-index: 6;
+	transition: all ease 0.95s;
+}
+
+.blobs.open .blob1 span {
+	transform: rotate(45deg) translate(0, -3px);
+}
+
+.blobs.open .blob2 {
+	bottom: -170px;
+}
+
+.blobs.open .blob3 {
+	bottom: -240px;
+}
+
+.blobs.open .blob4 {
+	bottom: -310px;
+}
+
+.blobs.open .blob5 {
+	bottom: -380px;
+}
+
+.mcorn {
+	width: 40px;
+	height: 40px;
+	margin-left: 8px;
+}
+
+.mul {
+	display: none;
+	background: #fff;
+	border: 1px silver solid;
+	position: absolute;
+	left: 50px;
+	list-style: none;
+	padding: 0;
+	font-size: 20px;
+}
+
+.mli {
+	border-bottom: 1px dashed silver;
+	font-size: 12px;
+	width: 150px;
+}
+
+.blob:hover .mul {
+	display: block;
+}
+
+.mli a {
+	color: silver;
+}

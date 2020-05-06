@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcu.res.dao.FoodMapper">
+
+	<resultMap type="com.lcu.res.po.Food" id="BaseResultMap">
+		<result column="RestaurantNumber" 	jdbcType="VARCHAR" property="restaurantNumber" />
+		<result column="FoodNumber" 		jdbcType="VARCHAR" property="foodNumber" />
+		<result column="PictureName" 		jdbcType="VARCHAR" property="pictureName" />
+		<result column="FoodName" 			jdbcType="VARCHAR" property="foodName" />
+		<result column="KindName" 			jdbcType="VARCHAR" property="kindName" />
+		<result column="MainIngreadient" 	jdbcType="VARCHAR" property="mainIngreadient" />
+		<result column="UnitPrice" 			jdbcType="DECIMAL" property="unitPrice" />
+		<result column="SaleStatus" 		jdbcType="INTEGER" property="saleStatus" />
+	</resultMap>
+
+	<insert id="createfood" parameterType="com.lcu.res.po.Food" >
+		insert into r_food (RestaurantNumber, FoodNumber, PictureName, FoodName,
+		KindName, MainIngreadient, UnitPrice, SaleStatus)
+		values (#{restaurantNumber, jdbcType=VARCHAR}, #{foodNumber, jdbcType=VARCHAR}, 
+		#{pictureName, jdbcType=VARCHAR}, #{foodName, jdbcType=VARCHAR}, #{kindName, jdbcType=VARCHAR}, 
+		#{mainIngreadient, jdbcType=VARCHAR}, #{unitPrice, jdbcType=DECIMAL}, 
+		#{saleStatus, jdbcType=INTEGER})
+	</insert>
+	
+	<select id="selectAllByresname" parameterType="com.lcu.res.po.Food" resultMap="BaseResultMap">
+		select *
+		from r_food
+		where RestaurantNumber=#{restaurantNumber}
+	</select>
+	
+	<select id="selectByresAndfood" parameterType="com.lcu.res.po.Food" resultMap="BaseResultMap">
+		select *
+		from r_food
+		where RestaurantNumber=#{restaurantNumber} and FoodNumber=#{foodNumber}
+	</select>
+	
+	<delete id="deleteByresAndfood" parameterType="com.lcu.res.po.Food">
+		delete from r_food
+		where RestaurantNumber=#{restaurantNumber} and FoodNumber=#{foodNumber}
+	</delete>
+	
+	<update id="updateByresAndfood" parameterType="com.lcu.res.po.Food">
+		update r_food 
+		set PictureName=#{pictureName, jdbcType=VARCHAR}, FoodName=#{foodName, jdbcType=VARCHAR}, 
+		KindName=#{kindName, jdbcType=VARCHAR}, MainIngreadient=#{mainIngreadient, jdbcType=VARCHAR}, 
+		UnitPrice=#{unitPrice, jdbcType=DECIMAL},  SaleStatus=#{saleStatus, jdbcType=INTEGER}
+		where RestaurantNumber=#{restaurantNumber} and FoodNumber=#{foodNumber}
+	</update>
+	
+	<select id="selectCount" parameterType="String" resultType="int">
+		select count(*) 
+		from r_food
+		where RestaurantNumber=#{restaurantNumber}
+	</select>
+	
+	<select id="findByPage" parameterType="Map" resultMap="BaseResultMap">
+		select *
+		from r_food
+		where RestaurantNumber=#{restaurantNumber}
+		<if test="start!=null and size!=null">
+			limit #{start},#{size}
+		</if>
+	</select>
+
+</mapper>

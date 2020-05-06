@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcu.res.dao.TableMapper">
+
+	<resultMap type="com.lcu.res.po.Table" id="BaseResultMap">
+		<result column="RestaurantNumber" 	jdbcType="VARCHAR" property="restaurantNumber" />
+		<result column="TableNumber" 		jdbcType="VARCHAR" property="tableNumber" />
+		<result column="Status" 			jdbcType="INTEGER" property="status" />
+		<result column="SeatNum" 			jdbcType="INTEGER" property="seatNum" />
+		<result column="OccupySeatNum" 		jdbcType="INTEGER" property="occupySeatNum" />
+		<result column="EmptySeatNum" 		jdbcType="INTEGER" property="emptySeatNum" />
+	</resultMap>
+
+	<insert id="createTable" parameterType="com.lcu.res.po.Table">
+		insert into r_table(RestaurantNumber, TableNumber, Status, SeatNum, OccupySeatNum, EmptySeatNum)
+		values(#{restaurantNumber, jdbcType=VARCHAR}, #{tableNumber, jdbcType=VARCHAR}, 
+		#{status, jdbcType=INTEGER}, #{seatNum, jdbcType=INTEGER}, #{occupySeatNum, jdbcType=INTEGER}, #{emptySeatNum, jdbcType=INTEGER})
+	</insert>
+
+	<select id="selectCount" parameterType="String" resultType="int">
+		select count(*) 
+		from r_table
+		where RestaurantNumber=#{restaurantNumber}
+	</select>
+	
+	<select id="findByPage" resultMap="BaseResultMap">
+		select *
+		from r_table
+		where RestaurantNumber=#{restaurantNumber}
+		<if test="start!=null and size!=null">
+			limit #{start},#{size}
+		</if>
+	</select>
+	
+	<select id="selectByTnAndRn" parameterType="com.lcu.res.po.Table" resultMap="BaseResultMap">
+		select * 
+		from r_table
+		where RestaurantNumber=#{restaurantNumber} and TableNumber=#{tableNumber}
+	</select>
+	
+	<select id="selectByRnAndSeat" parameterType="com.lcu.res.po.Table" resultMap="BaseResultMap">
+		select * 
+		from r_table
+		where RestaurantNumber=#{restaurantNumber} and EmptySeatNum &gt;= #{occupySeatNum}
+	</select>
+	
+	<update id="updateTable" parameterType="com.lcu.res.po.Table">
+		update r_table
+		set SeatNum=#{seatNum, jdbcType=INTEGER},EmptySeatNum=#{emptySeatNum, jdbcType=INTEGER}
+		where RestaurantNumber=#{restaurantNumber} and TableNumber=#{tableNumber}
+	</update>
+	
+	<update id="updateStatus" parameterType="com.lcu.res.po.Table">
+		update r_table
+		set OccupySeatNum=#{occupySeatNum, jdbcType=INTEGER},EmptySeatNum=#{emptySeatNum, jdbcType=INTEGER}
+		where RestaurantNumber=#{restaurantNumber} and TableNumber=#{tableNumber}
+	</update>
+	
+	<delete id="deleteTable" parameterType="com.lcu.res.po.Table">
+		delete from r_table
+		where RestaurantNumber=#{restaurantNumber} and TableNumber=#{tableNumber}
+	</delete>
+
+</mapper>

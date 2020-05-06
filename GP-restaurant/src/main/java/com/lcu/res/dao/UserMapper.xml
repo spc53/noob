@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcu.res.dao.UserMapper">
+
+	<resultMap type="com.lcu.res.po.User" id="BaseResultMap">
+		<result column="RestaurantNumber" 	jdbcType="VARCHAR" property="restaurantNumber" />
+		<result column="UserName" 			jdbcType="VARCHAR" property="userName" />
+		<result column="Password" 			jdbcType="VARCHAR" property="password" />
+		<result column="Authority" 			jdbcType="INTEGER" property="authority" />
+		<result column="ActualName" 		jdbcType="VARCHAR" property="actualName" />
+		<result column="Sex" 				jdbcType="VARCHAR" property="sex" />
+		<result column="TelephoneNumber" 	jdbcType="VARCHAR" property="telephoneNumber" />
+		<result column="Mailbox" 			jdbcType="VARCHAR" property="mailbox" />
+	</resultMap>
+
+	<select id="selectBynameAndpsd" parameterType="com.lcu.res.po.User" resultMap="BaseResultMap">
+		select *
+		from r_user
+		where UserName=#{userName} and Password=#{password}
+	</select>
+	
+	<select id="selectPwByName" parameterType="String" resultType="String">
+		select Password
+		from r_user
+		where UserName=#{userName}
+	</select>
+
+	<insert id="createUser" parameterType="com.lcu.res.po.User" >
+		insert into r_user (RestaurantNumber, UserName, Password, Authority, 
+		ActualName, Sex, TelephoneNumber, Mailbox)
+		values (#{restaurantNumber, jdbcType=VARCHAR}, #{userName, jdbcType=VARCHAR}, 
+		#{password, jdbcType=VARCHAR}, #{authority, jdbcType=VARCHAR}, 
+		#{actualName, jdbcType=VARCHAR}, #{sex, jdbcType=VARCHAR}, 
+		#{telephoneNumber, jdbcType=VARCHAR}, #{mailbox, jdbcType=VARCHAR})
+	</insert>
+	
+	<update id="updateUserInfo" parameterType="com.lcu.res.po.User">
+		update r_user
+		set ActualName=#{actualName, jdbcType=VARCHAR}, 
+		TelephoneNumber=#{telephoneNumber, jdbcType=VARCHAR}
+		<if test="sex!=null">
+			, Sex=#{sex, jdbcType=VARCHAR}
+		</if>
+		<if test="mailbox!=null">
+			, Mailbox=#{mailbox, jdbcType=VARCHAR}
+		</if>
+		where UserName=#{userName}
+	</update>
+	
+	<update id="updatePw" parameterType="com.lcu.res.po.User">
+		update r_user
+		set Password=#{password, jdbcType=VARCHAR}
+		where UserName=#{userName}
+	</update>
+	
+	<select id="selectByUserName" parameterType="String" resultMap="BaseResultMap">
+		select *
+		from r_user
+		where UserName=#{userName}
+	</select>
+	
+</mapper>

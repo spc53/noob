@@ -1,0 +1,110 @@
+
+.one {
+	width: 20%;
+	text-align: center;
+}
+
+.two {
+	width: 10%;
+	text-align: center;
+}
+
+.three {
+	width: 10%;
+	text-align: center;
+}
+
+.four {
+	width: 10%;
+	text-align: center;
+}
+
+.fives {
+	width: 10%;
+	text-align: center;
+}
+
+.six {
+	width: 10%;
+	text-align: center;
+}
+
+.seven {
+	width: 10%;
+	text-align: center;
+}
+
+.eight {
+	width: 10%;
+	text-align: center;
+}
+
+.nine {
+	width: 10%;
+	text-align: center;
+}
+
+.search{
+	margin-top: 10px;
+	height: 30px;
+}
+
+.orderbody{
+	margin-top: 10px;
+}
+
+.searchl{
+	float: left;
+}
+
+.searchr{
+	float: left;
+    margin-left: 20px;
+}
+
+.searchdinp{
+	float: left;
+    margin-left: 5px;
+    border: 1px solid;
+    height: 30px;
+    line-height: 30px;
+    width: 120px;
+    background: snow;
+    border-radius: 5px;
+    border: 1px silver solid;
+}
+
+.searchinp{
+	width: 110px;
+    height: 20px;
+    margin-top: 3px;
+    border: none;
+    background: snow;
+}
+
+.searcha{
+	display: block;
+    float: left;
+    border: 1px solid;
+    margin-left: 5px;
+    height: 30px;
+    width: 60px;
+    text-align: center;
+    background: #778899;
+    color: snow;
+    font-weight: bold;
+    border-radius: 5px;
+    padding-top: 4px;
+}
+
+.searchbtn{
+	border: none;
+    background: #778899;
+    color: snow;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 5px;
+}
